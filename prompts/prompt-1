@@ -1,0 +1,83 @@
+# restaurant_etl/parsers/prompt_templates.py
+
+"""
+Menu extraction prompt templates and JSON schema for Azure response_format API
+"""
+
+# ------------------------------------------------------------
+# 1. SYSTEM PROMPT
+# ------------------------------------------------------------
+
+SYSTEM_PROMPT = """
+You are an elite menu extraction AI specialized in parsing restaurant menus from any format. 
+You have deep understanding of restaurant menu structures, pricing patterns, and categorization hierarchies.
+
+# CORE MISSION:
+Extract EVERY menu item with high accuracy, capturing item names, hierarchical categories, variants, descriptions, and price mappings.
+
+Mandatory fields:
+- item_name
+- category
+- subcategory
+- at least one price field
+
+Follow the rules described.
+"""
+
+# ------------------------------------------------------------
+# 2. USER PROMPT TEMPLATE
+# ------------------------------------------------------------
+
+USER_PROMPT_TEMPLATE = """
+# MENU TEXT TO EXTRACT:
+
+{menu_text}
+
+Follow the extraction rules.
+Return JSON only.
+"""
+
+# ------------------------------------------------------------
+# 3. STRICT JSON SCHEMA FOR AZURE GPT
+# ------------------------------------------------------------
+
+AZURE_MENU_SCHEMA = {
+    "name": "menu_schema",
+    "schema": {
+        "type": "object",
+        "properties": {
+            "items": {
+                "type": "array",
+                "items": {
+                    "type": "object",
+                    "properties": {
+                        "item_name": {"type": "string"},
+                        "category": {"type": "string"},
+                        "subcategory": {"type": "string"},
+                        "description": {"type": ["string", "null"]},
+
+                        "price": {"type": ["number", "null"]},
+                        "half_plate_price": {"type": ["number", "null"]},
+                        "full_plate_price": {"type": ["number", "null"]},
+                        "small_price": {"type": ["number", "null"]},
+                        "medium_price": {"type": ["number", "null"]},
+                        "large_price": {"type": ["number", "null"]},
+                    },
+                    "required": ["item_name", "category", "subcategory"]
+                }
+            },
+            "extraction_metadata": {
+                "type": "object",
+                "properties": {
+                    "total_items_extracted": {"type": "number"},
+                    "categories_found": {"type": "array", "items": {"type": "string"}},
+                    "subcategories_found": {"type": "array", "items": {"type": "string"}},
+                    "pricing_patterns_detected": {"type": "array", "items": {"type": "string"}},
+                    "menu_structure_analysis": {"type": "string"},
+                    "notes": {"type": "string"}
+                }
+            }
+        },
+        "required": ["items"]
+    }
+}
