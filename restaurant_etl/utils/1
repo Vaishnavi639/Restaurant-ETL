@@ -1,0 +1,48 @@
+"""
+Minimal text cleaning utilities for OCR output.
+"""
+
+import re
+
+def normalize_extracted_text(raw: str) -> str:
+    """
+    Clean the raw OCR/text-extractor output to a normalized block optimized for LLM parsing.
+    - remove page markers (--- Page N ---)
+    - collapse repeated whitespace
+    - remove stray headers/footers heuristically
+    - preserve line breaks between likely items
+    """
+    if not raw:
+        return ""
+
+    text = raw
+
+    # remove page markers like --- Page 1 ---
+    text = re.sub(r'-{2,}\s*Page\s*\d+\s*-{2,}', '\n', text, flags=re.IGNORECASE)
+
+    # remove common OCR garbage lines (lines with lots of symbols)
+    lines = []
+    for line in text.splitlines():
+        s = line.strip()
+        # skip lines that are just punctuation or too short non-alnum
+        if len(s) <= 1:
+            continue
+        if re.match(r'^[\W_]+$', s):
+            continue
+        # normalize dots used as leader lines (e.g., "Item........12.00")
+        s = re.sub(r'\.{2,}', ' ', s)
+        lines.append(s)
+
+    text = "\n".join(lines)
+
+    # collapse multiple blank lines
+    text = re.sub(r'\n{2,}', '\n\n', text)
+
+    # normalize whitespace
+    text = re.sub(r'[ \t]{2,}', ' ', text)
+
+    # trim
+    text = text.strip()
+
+    return text
+

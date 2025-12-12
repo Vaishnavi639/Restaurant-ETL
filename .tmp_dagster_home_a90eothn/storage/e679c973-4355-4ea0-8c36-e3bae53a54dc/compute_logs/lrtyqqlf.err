@@ -1,0 +1,83 @@
+[32m2025-12-11 19:21:31 +0530[0m - dagster - [34mDEBUG[0m - menu_job - e679c973-4355-4ea0-8c36-e3bae53a54dc - 37755 - LOGS_CAPTURED - Started capturing logs in process (pid: 37755).
+[32m2025-12-11 19:21:31 +0530[0m - dagster - [34mDEBUG[0m - menu_job - e679c973-4355-4ea0-8c36-e3bae53a54dc - 37755 - menu_etl_asset - STEP_START - Started execution of step "menu_etl_asset".
+INFO:dagster_project.assets.menu_assets:Resolved project_root = /home/vaishnavi/Desktop/menu-etl
+INFO:dagster_project.assets.menu_assets:Resolved input_dir = /home/vaishnavi/Desktop/menu-etl/input exists=True
+INFO:dagster_project.assets.menu_assets:Resolved output_dir = /home/vaishnavi/Desktop/menu-etl/output exists=True
+INFO:restaurant_etl.parsers.llm_parser:✓ AzureOpenAI client initialized (text-only mode).
+INFO:dagster_project.assets.menu_assets:Processing file: PNF-Food-Drinks.pdf
+INFO:restaurant_etl.extractors.universal_extractor:Using PDFExtractor for PNF-Food-Drinks.pdf
+INFO:restaurant_etl.extractors.pdf_extractor:📄 Starting extraction from: PNF-Food-Drinks.pdf
+INFO:restaurant_etl.extractors.pdf_extractor:PDF has 15 pages
+INFO:restaurant_etl.extractors.pdf_extractor:✓ Page 1: 1287 characters
+INFO:restaurant_etl.extractors.pdf_extractor:✓ Page 2: 1943 characters
+INFO:restaurant_etl.extractors.pdf_extractor:✓ Page 3: 956 characters
+INFO:restaurant_etl.extractors.pdf_extractor:✓ Page 4: 1533 characters
+INFO:restaurant_etl.extractors.pdf_extractor:✓ Page 5: 1781 characters
+INFO:restaurant_etl.extractors.pdf_extractor:✓ Page 6: 1309 characters
+INFO:restaurant_etl.extractors.pdf_extractor:✓ Page 7: 1209 characters
+INFO:restaurant_etl.extractors.pdf_extractor:✓ Page 8: 1037 characters
+INFO:restaurant_etl.extractors.pdf_extractor:✓ Page 9: 1301 characters
+INFO:restaurant_etl.extractors.pdf_extractor:✓ Page 10: 938 characters
+INFO:restaurant_etl.extractors.pdf_extractor:✓ Page 11: 1275 characters
+INFO:restaurant_etl.extractors.pdf_extractor:✓ Page 12: 1248 characters
+INFO:restaurant_etl.extractors.pdf_extractor:✓ Page 13: 885 characters
+INFO:restaurant_etl.extractors.pdf_extractor:✓ Page 14: 1029 characters
+INFO:restaurant_etl.extractors.pdf_extractor:✓ Page 15: 715 characters
+INFO:restaurant_etl.parsers.llm_parser: Starting menu parse...
+INFO:restaurant_etl.parsers.llm_parser:Menu split into 10 chunk(s).
+INFO:restaurant_etl.parsers.llm_parser: Chunk 1/10 (est tokens: 500)
+INFO:httpx:HTTP Request: POST https://afto-ai.openai.azure.com/openai/deployments/afto-ai-gpt-4o/chat/completions?api-version=2024-08-01-preview "HTTP/1.1 200 OK"
+INFO:restaurant_etl.parsers.llm_parser: Chunk 2/10 (est tokens: 500)
+INFO:httpx:HTTP Request: POST https://afto-ai.openai.azure.com/openai/deployments/afto-ai-gpt-4o/chat/completions?api-version=2024-08-01-preview "HTTP/1.1 200 OK"
+INFO:restaurant_etl.parsers.llm_parser: Chunk 3/10 (est tokens: 499)
+INFO:httpx:HTTP Request: POST https://afto-ai.openai.azure.com/openai/deployments/afto-ai-gpt-4o/chat/completions?api-version=2024-08-01-preview "HTTP/1.1 200 OK"
+INFO:restaurant_etl.parsers.llm_parser: Chunk 4/10 (est tokens: 500)
+INFO:httpx:HTTP Request: POST https://afto-ai.openai.azure.com/openai/deployments/afto-ai-gpt-4o/chat/completions?api-version=2024-08-01-preview "HTTP/1.1 200 OK"
+INFO:restaurant_etl.parsers.llm_parser: Chunk 5/10 (est tokens: 499)
+INFO:httpx:HTTP Request: POST https://afto-ai.openai.azure.com/openai/deployments/afto-ai-gpt-4o/chat/completions?api-version=2024-08-01-preview "HTTP/1.1 200 OK"
+INFO:restaurant_etl.parsers.llm_parser: Chunk 6/10 (est tokens: 500)
+INFO:httpx:HTTP Request: POST https://afto-ai.openai.azure.com/openai/deployments/afto-ai-gpt-4o/chat/completions?api-version=2024-08-01-preview "HTTP/1.1 200 OK"
+INFO:restaurant_etl.parsers.llm_parser: Chunk 7/10 (est tokens: 499)
+INFO:httpx:HTTP Request: POST https://afto-ai.openai.azure.com/openai/deployments/afto-ai-gpt-4o/chat/completions?api-version=2024-08-01-preview "HTTP/1.1 200 OK"
+INFO:restaurant_etl.parsers.llm_parser: Chunk 8/10 (est tokens: 500)
+INFO:httpx:HTTP Request: POST https://afto-ai.openai.azure.com/openai/deployments/afto-ai-gpt-4o/chat/completions?api-version=2024-08-01-preview "HTTP/1.1 200 OK"
+INFO:restaurant_etl.parsers.llm_parser: Chunk 9/10 (est tokens: 499)
+INFO:httpx:HTTP Request: POST https://afto-ai.openai.azure.com/openai/deployments/afto-ai-gpt-4o/chat/completions?api-version=2024-08-01-preview "HTTP/1.1 200 OK"
+INFO:restaurant_etl.parsers.llm_parser: Chunk 10/10 (est tokens: 115)
+INFO:httpx:HTTP Request: POST https://afto-ai.openai.azure.com/openai/deployments/afto-ai-gpt-4o/chat/completions?api-version=2024-08-01-preview "HTTP/1.1 200 OK"
+INFO:restaurant_etl.parsers.llm_parser:Parsed 158 items
+INFO:dagster_project.assets.menu_assets:Wrote CSV: /home/vaishnavi/Desktop/menu-etl/output/PNF-Food-Drinks.csv
+INFO:dagster_project.assets.menu_assets:Processing file: great_india.pdf
+INFO:restaurant_etl.extractors.universal_extractor:Using PDFExtractor for great_india.pdf
+INFO:restaurant_etl.extractors.pdf_extractor:📄 Starting extraction from: great_india.pdf
+INFO:restaurant_etl.extractors.pdf_extractor:PDF has 8 pages
+INFO:restaurant_etl.extractors.pdf_extractor:✓ Page 1: 4 characters
+INFO:restaurant_etl.extractors.pdf_extractor:✓ Page 2: 939 characters
+INFO:restaurant_etl.extractors.pdf_extractor:✓ Page 3: 2482 characters
+INFO:restaurant_etl.extractors.pdf_extractor:✓ Page 4: 2835 characters
+INFO:restaurant_etl.extractors.pdf_extractor:✓ Page 5: 2049 characters
+INFO:restaurant_etl.extractors.pdf_extractor:✓ Page 6: 2281 characters
+INFO:restaurant_etl.extractors.pdf_extractor:✓ Page 7: 2273 characters
+WARNING:restaurant_etl.extractors.pdf_extractor: Page 8: No text found
+INFO:restaurant_etl.parsers.llm_parser: Starting menu parse...
+INFO:restaurant_etl.parsers.llm_parser:Menu split into 7 chunk(s).
+INFO:restaurant_etl.parsers.llm_parser: Chunk 1/7 (est tokens: 500)
+INFO:httpx:HTTP Request: POST https://afto-ai.openai.azure.com/openai/deployments/afto-ai-gpt-4o/chat/completions?api-version=2024-08-01-preview "HTTP/1.1 200 OK"
+INFO:restaurant_etl.parsers.llm_parser: Chunk 2/7 (est tokens: 499)
+INFO:httpx:HTTP Request: POST https://afto-ai.openai.azure.com/openai/deployments/afto-ai-gpt-4o/chat/completions?api-version=2024-08-01-preview "HTTP/1.1 200 OK"
+INFO:restaurant_etl.parsers.llm_parser: Chunk 3/7 (est tokens: 500)
+INFO:httpx:HTTP Request: POST https://afto-ai.openai.azure.com/openai/deployments/afto-ai-gpt-4o/chat/completions?api-version=2024-08-01-preview "HTTP/1.1 200 OK"
+INFO:restaurant_etl.parsers.llm_parser: Chunk 4/7 (est tokens: 500)
+INFO:httpx:HTTP Request: POST https://afto-ai.openai.azure.com/openai/deployments/afto-ai-gpt-4o/chat/completions?api-version=2024-08-01-preview "HTTP/1.1 200 OK"
+INFO:restaurant_etl.parsers.llm_parser: Chunk 5/7 (est tokens: 499)
+INFO:httpx:HTTP Request: POST https://afto-ai.openai.azure.com/openai/deployments/afto-ai-gpt-4o/chat/completions?api-version=2024-08-01-preview "HTTP/1.1 200 OK"
+INFO:restaurant_etl.parsers.llm_parser: Chunk 6/7 (est tokens: 500)
+INFO:httpx:HTTP Request: POST https://afto-ai.openai.azure.com/openai/deployments/afto-ai-gpt-4o/chat/completions?api-version=2024-08-01-preview "HTTP/1.1 200 OK"
+INFO:restaurant_etl.parsers.llm_parser: Chunk 7/7 (est tokens: 217)
+INFO:httpx:HTTP Request: POST https://afto-ai.openai.azure.com/openai/deployments/afto-ai-gpt-4o/chat/completions?api-version=2024-08-01-preview "HTTP/1.1 200 OK"
+INFO:restaurant_etl.parsers.llm_parser:Parsed 106 items
+INFO:dagster_project.assets.menu_assets:Wrote CSV: /home/vaishnavi/Desktop/menu-etl/output/great_india.csv
+[32m2025-12-11 19:23:52 +0530[0m - dagster - [34mDEBUG[0m - menu_job - e679c973-4355-4ea0-8c36-e3bae53a54dc - 37755 - menu_etl_asset - STEP_OUTPUT - Yielded output "result" of type "String". (Type check passed).
+[32m2025-12-11 19:23:52 +0530[0m - dagster - [34mDEBUG[0m - menu_job - e679c973-4355-4ea0-8c36-e3bae53a54dc - menu_etl_asset - Writing file at: /home/vaishnavi/Desktop/menu-etl/.tmp_dagster_home_a90eothn/storage/e679c973-4355-4ea0-8c36-e3bae53a54dc/menu_etl_asset/result using PickledObjectFilesystemIOManager...
+[32m2025-12-11 19:23:52 +0530[0m - dagster - [34mDEBUG[0m - menu_job - e679c973-4355-4ea0-8c36-e3bae53a54dc - 37755 - menu_etl_asset - HANDLED_OUTPUT - Handled output "result" using IO manager "io_manager"
+[32m2025-12-11 19:23:52 +0530[0m - dagster - [34mDEBUG[0m - menu_job - e679c973-4355-4ea0-8c36-e3bae53a54dc - 37755 - menu_etl_asset - STEP_SUCCESS - Finished execution of step "menu_etl_asset" in 2m21s.

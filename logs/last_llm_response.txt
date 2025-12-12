@@ -1,0 +1,1 @@
+Error code: 400 - {'error': {'message': "Invalid schema for response_format 'menu_extraction': In context=(), 'additionalProperties' is required to be supplied and to be false.", 'type': 'invalid_request_error', 'param': 'response_format', 'code': None}}
